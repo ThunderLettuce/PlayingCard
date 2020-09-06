@@ -29,29 +29,29 @@ class Card():
             print("That's not a suit!")
 
     @number.setter
-    def number(self, number):
-        numbers = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+    def number(self, number_or_letter):
+        numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10]
         face = {"A": 1, "J": 10, "Q": 10, "K": 10}
 
-        if number in numbers:
-            if face[number]:
-                self._number = number
-                self._value = int(face[number])
-                print(face[number])
-            else:
-                self._number = number
-                self._value  = int(number)
-                print(face[number])
+        if number_or_letter in numbers:
+            self._number = number
+            self._value = int(face[number])
+            print(face[number])
+        elif number_or_letter in face:
+            self._number = number
+            self._value = int(number)
+            print(face[number])
         else:
             print("That's not a valid number")
 
     def __repr__(self):
-        # return self.number + " of " + self.suit
         return f"{str(self.number)} of {str(self.suit)}"
+
 
 my_card = Card("Hearts", 7)
 another_card = Card("Dinosaurs", 2)
+my_card.number = 9
 
-print(my_card.value)
+print(my_card.number)
 
 # https://projects.raspberrypi.org/en/projects/deck-of-cards/5
